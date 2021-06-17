@@ -10,17 +10,21 @@ function App() {
 	const [Registering, setRegistering] = useState(false)
 	const [IsLoading, setLoading] = useState(false)
 
+	const logout = () => {
+		setToken("")
+		setIsAuthenticated(false)
+	}
+
 	return (
 		<div className="container">
-			<h1 className="underline-text" style={{ textAlign: "center" }}>
-				TODOS
-			</h1>
+			<h1 className="title">TODOS</h1>
+			<div className="title-underline"></div>
 			{IsLoading ? (
 				<Loading />
 			) : IsAuthenticated ? (
-				<Todos Token={Token} setLoading={setLoading} />
+				<Todos Token={Token} logout={logout} />
 			) : Registering ? (
-				<Register />
+				<Register setRegistering={setRegistering} />
 			) : (
 				<Login
 					setToken={setToken}

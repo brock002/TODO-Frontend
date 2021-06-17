@@ -1,3 +1,6 @@
+import { BsCheckAll } from "react-icons/bs"
+import { AiOutlineDelete } from "react-icons/ai"
+
 const Todo = ({
 	id,
 	task,
@@ -7,18 +10,28 @@ const Todo = ({
 	completeTodo,
 }) => {
 	return (
-		<div>
-			<p>
-				Task: {task} <br />
-				{is_finished ? "finished" : "not finished"}
-				<br />
-				{is_finished || (
-					<button onClick={() => completeTodo(id)}>&#10004;</button>
-				)}
-				<button onClick={() => deleteTodo(id)}>&times;</button>
-				Description: {description} <br />{" "}
-			</p>
-			<hr />
+		<div
+			className={
+				is_finished ? "todo-block todo-completed" : "todo-block todo-pending"
+			}
+		>
+			<div className="flexbox">
+				<h5>{task}</h5>
+				<div className="flexbox">
+					{is_finished || (
+						<button
+							onClick={() => completeTodo(id)}
+							className="btn margin-right"
+						>
+							<BsCheckAll />
+						</button>
+					)}
+					<button onClick={() => deleteTodo(id)} className="btn">
+						<AiOutlineDelete />
+					</button>
+				</div>
+			</div>
+			<p>{description}</p>
 		</div>
 	)
 }

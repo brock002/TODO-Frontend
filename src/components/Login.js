@@ -24,36 +24,51 @@ const Login = ({
 	}
 
 	return (
-		<div className="x-margin-div">
-			<h3 className="underline-text">LOGIN</h3>
-			<form onSubmit={login} method="post" className="form-basic">
-				<div className="form-flex">
+		<>
+			<form onSubmit={login} method="post" className="sub-container">
+				<h3 className="title-basic-underline">LOGIN</h3>
+				<div className="flexbox">
 					<div className="form-group">
-						<label htmlFor="username">Enter username:</label>
+						<label htmlFor="username" className="form-label">
+							Enter username:
+						</label>
 						<input
 							type="text"
 							name="username"
 							value={LoginUser}
 							onChange={e => setLoginUser(e.target.value)}
+							className="form-input"
+							required
 						/>
 					</div>
 					<div className="form-group">
-						<label htmlFor="password">Enter password:</label>
+						<label htmlFor="password" className="form-label">
+							Enter password:
+						</label>
 						<input
 							type="password"
 							name="password"
 							value={LoginPass}
 							onChange={e => setLoginPass(e.target.value)}
+							className="form-input"
+							required
 						/>
 					</div>
 				</div>
-				<button type="submit">Log In</button>
+				<button type="submit" className="btn btn-block">
+					Log In
+				</button>
+				<p className="margin-top">
+					Don't have an account? <br />
+					<button
+						onClick={() => setRegistering(true)}
+						className="btn btn-hipster"
+					>
+						Register here
+					</button>
+				</p>
 			</form>
-			<p>
-				Don't have an account? <br />
-				<button onClick={() => setRegistering(true)}>Register here</button>
-			</p>
-		</div>
+		</>
 	)
 }
 
