@@ -17,21 +17,25 @@ function App() {
 
 	return (
 		<div className="container">
-			<h1 className="title">TODOS</h1>
-			<div className="title-underline"></div>
 			{IsLoading ? (
 				<Loading />
 			) : IsAuthenticated ? (
 				<Todos Token={Token} logout={logout} />
-			) : Registering ? (
-				<Register setRegistering={setRegistering} />
 			) : (
-				<Login
-					setToken={setToken}
-					setIsAuthenticated={setIsAuthenticated}
-					setRegistering={setRegistering}
-					setLoading={setLoading}
-				/>
+				<>
+					<h1 className="title">TODOS</h1>
+					<div className="title-underline"></div>
+					{Registering ? (
+						<Register setRegistering={setRegistering} />
+					) : (
+						<Login
+							setToken={setToken}
+							setIsAuthenticated={setIsAuthenticated}
+							setRegistering={setRegistering}
+							setLoading={setLoading}
+						/>
+					)}
+				</>
 			)}
 		</div>
 	)

@@ -11,9 +11,9 @@ const Todo = ({
 }) => {
 	return (
 		<div
-			className={
-				is_finished ? "todo-block todo-completed" : "todo-block todo-pending"
-			}
+			className={`todo-block ${
+				is_finished ? "todo-completed" : "todo-pending"
+			}`}
 		>
 			<div className="flexbox">
 				<h5>{task}</h5>
@@ -21,12 +21,12 @@ const Todo = ({
 					{is_finished || (
 						<button
 							onClick={() => completeTodo(id)}
-							className="btn margin-right"
+							className="btn btn-hipster margin-right"
 						>
 							<BsCheckAll />
 						</button>
 					)}
-					<button onClick={() => deleteTodo(id)} className="btn">
+					<button onClick={() => deleteTodo(id)} className="btn btn-hipster">
 						<AiOutlineDelete />
 					</button>
 				</div>

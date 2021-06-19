@@ -2,8 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "../axios"
 import Todo from "./Todo"
 import AddTodo from "./AddTodo"
-import { AiOutlineLogout, AiOutlineMinusCircle } from "react-icons/ai"
-import { IoAddCircleOutline } from "react-icons/io5"
+import Header from "./Header"
 
 const Todos = ({ Token, logout }) => {
 	const [TodoItems, setTodoItems] = useState([])
@@ -31,26 +30,11 @@ const Todos = ({ Token, logout }) => {
 
 	return (
 		<>
-			<div className="flexbox">
-				<button onClick={logout} className="btn btn-hipster">
-					<AiOutlineLogout />
-				</button>
-				{ShowTodoForm ? (
-					<button
-						onClick={() => setShowTodoForm(false)}
-						className="btn btn-hipster"
-					>
-						<AiOutlineMinusCircle />
-					</button>
-				) : (
-					<button
-						onClick={() => setShowTodoForm(true)}
-						className="btn btn-hipster"
-					>
-						<IoAddCircleOutline />
-					</button>
-				)}
-			</div>
+			<Header
+				ShowTodoForm={ShowTodoForm}
+				setShowTodoForm={setShowTodoForm}
+				logout={logout}
+			/>
 
 			{ShowTodoForm ? (
 				<AddTodo
@@ -60,7 +44,10 @@ const Todos = ({ Token, logout }) => {
 				/>
 			) : (
 				<>
-					<div className="sub-container">
+					<div
+						className="sub-container"
+						style={{ backgroundColor: "var(--primary-300)" }}
+					>
 						<h3 className="title">Pending</h3>
 						<div className="title-underline"></div>
 						{TodoItems.filter(item => !item.is_finished).map(item => {
@@ -74,7 +61,10 @@ const Todos = ({ Token, logout }) => {
 							)
 						})}
 					</div>
-					<div className="sub-container">
+					<div
+						className="sub-container"
+						style={{ backgroundColor: "var(--grey-300)" }}
+					>
 						<h3 className="title">Completed</h3>
 						<div className="title-underline"></div>
 						{TodoItems.filter(item => item.is_finished).map(item => {

@@ -16,28 +16,24 @@ const AddTodo = ({ Reset, setReset, setShowTodoForm }) => {
 			<form method="post" onSubmit={addTodo} className="sub-container">
 				<h3 className="title-basic-underline">Add Todo</h3>
 				<div className="form-group">
-					<label htmlFor="task" className="form-label">
-						Task:
-					</label>
 					<input
 						type="text"
 						name="task"
 						value={NewTodo.task}
 						onChange={e => setNewTodo({ ...NewTodo, task: e.target.value })}
 						className="form-input"
+						placeholder="Task"
 						required
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="description" className="form-label">
-						Description:
-					</label>
 					<textarea
 						name="description"
 						value={NewTodo.description}
 						onChange={e =>
 							setNewTodo({ ...NewTodo, description: e.target.value })
 						}
+						placeholder="Description"
 						className="form-textarea"
 					></textarea>
 				</div>
